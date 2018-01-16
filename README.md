@@ -10,3 +10,6 @@ The goal of this project is to create your own client code that imports the File
 -  which state had the county with the largest % difference
 -  which state had the county with the largest literal vote difference
 
+## Files to make
+
+Again, you will need to create and upload your electionParser file and a separate client file which complete the questions above.
