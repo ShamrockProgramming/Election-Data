@@ -1,6 +1,6 @@
 # Election-Data
 
-The goal of this project is to create your own client code that imports the FilerReader and a Parser that you make to answer the questions below.
+The goal of this project is to create your own client code that imports the FilerReader and a Parser that you make to answer the questions below.  If the question could return more than one piece of data in the answer, declare, store, and return your answer as an array.
 
 -  find states with at least/at most/ and exactly blank counties.  It is best to think of this as 3 separate functions which all perform basically.
 -  find all state totals and store them in a new array (aka this happens when the  fips == 0)
