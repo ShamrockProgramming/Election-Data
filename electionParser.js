@@ -6,10 +6,10 @@ const Parser = function(){
         this.state = array[0];
         this.county = array[1];
         this.fips = array[2];
-        this.obamaV = array[3];
-        this.obamaP = array[4];
-        this.romneyV = array[5];
-        this.romneyP = array[6];
+        this.obamaV = Number(array[3]);
+        this.obamaP = Number(array[4]);
+        this.romneyV = Number(array[5]);
+        this.romneyP = Number(array[6]);
         }
         else{
             console.log("Did not parse: "+array);
