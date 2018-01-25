@@ -14,12 +14,12 @@ console.log(parsedList);
 */
 
 // find states with at least/at most/exactly blank counties
-// find all state totals aka fips ==0
+//x find all state totals aka fips ==0
 // find all states where percent difference was less than p%
 // sort counties within a given state from least to greatest total votes
-//x name counties a candidate won in a state and show percent.
+// name counties a candidate won in a state and show percent.
 // which state had the county with the largest % difference
-// which state had the county with the largest literal vote difference
+//x which state had the county with the largest literal vote difference
 
 //Will find the name and total votes between the two candidates.
 function stateTotals(datalist){
@@ -36,6 +36,34 @@ function stateTotals(datalist){
     console.log("The size of this set is "+totals.size);
     return totals;
 }
+
+
+function percentMargin(datalist,p){
+    let margin;
+    let stateList = new Set();
+    //build object
+    function StateMargin(obj){
+        let margin = obj.obamaP - obj.romneyP;
+        this.state = obj.state;
+        this.margin = Math.abs(margin);
+        this.winner;
+        if(margin>0){
+            this.winner = "Obama";
+        }
+        else{
+            this.winner = "Romney";
+        }
+    }
+    //add to set
+    for(let r=0;r<datalist.length;r++){
+        let diff = Math.abs(datalist[r].obamaP - datalist[r].romneyP);
+        if(datalist[r].fips === "0" && diff <=p){
+            stateList.add(new StateMargin(datalist[r]));
+        }
+    }
+    return stateList
+}
+
 
 function largestVoteDiff(datalist){
     let state;
@@ -62,6 +90,6 @@ function largestVoteDiff(datalist){
     console.log("the difference was "+diff+"\nin the state of "+state+"\nin "+county+" county");
     return state;
 }
-
-console.log(largestVoteDiff(parsedList));
+console.log(percentMargin(parsedList,10));
+//console.log(largestVoteDiff(parsedList));
 //console.log(stateTotals(parsedList));
