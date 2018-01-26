@@ -37,6 +37,41 @@ function stateTotals(datalist){
     return totals;
 }
 
+function countiesWon(candidate,datalist){
+    let obama = candidate.toLowerCase() == "obama";
+    let counties = new Set();
+
+    function CountyMargin(obj){
+        let margin = obj.obamaP - obj.romneyP;
+        this.state = obj.state;
+        this.margin = Math.abs(margin);
+        this.winner;
+        if(margin>0){
+            this.winner = "Obama";
+        }
+        else{
+            this.winner = "Romney";
+        }
+    }
+
+    if(obama){
+        for(let c=1;c<datalist.length;c++){
+            let temp = new CountyMargin(datalist[c]);
+            if(temp.winner == "Obama" && datalist[c].fips !== "0"){
+                counties.add(new CountyMargin(datalist[c]));
+            }
+        }
+    }
+    else{
+        for(let c=1;c<datalist.length;c++){
+            let temp = new CountyMargin(datalist[c]);
+            if(temp.winner == "Romney" && datalist[c].fips !== "0"){
+                counties.add(new CountyMargin(datalist[c]));
+            }
+        }
+    }
+    return counties;
+}
 
 function percentMargin(datalist,p){
     let margin;
@@ -90,6 +125,8 @@ function largestVoteDiff(datalist){
     console.log("the difference was "+diff+"\nin the state of "+state+"\nin "+county+" county");
     return state;
 }
-console.log(percentMargin(parsedList,10));
+//console.log(countiesWon("obama",parsedList).size);
+//console.log(countiesWon("romney",parsedList).size);
+//console.log(percentMargin(parsedList,10));
 //console.log(largestVoteDiff(parsedList));
 //console.log(stateTotals(parsedList));
