@@ -28,7 +28,7 @@ function stateTotals(datalist){
         this.name = obj.state;
         this.total = obj.obamaV+obj.romneyV;
     }
-    for(let r=0;r<datalist.length;r++){
+    for(let r=1;r<datalist.length;r++){
         if(datalist[r].fips === "0"){
             totals.add(new state(datalist[r]));
         }
